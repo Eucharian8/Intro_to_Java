@@ -30,10 +30,13 @@ button{
     text-align: center;
     padding: 10px;
     border-radius: 8px;
+    border-color: white;
     font-size: 15px;
     background-color: azure;
-    /* position: relative;
-    left: 250px;
-    top: 20px; */
     cursor: pointer;
+}
+table, th, td {
+    border: 2px solid white;
+    color: white;
+    padding: 5px;
 }
