@@ -1,29 +1,28 @@
 
-const body = document.querySelector('body');
 const btn = document.querySelector('#btn');
-const colorHistory = document.getElementById('color-history');
-const colors = ['blue', 'green', 'blueviolet', 'darkorange', 'red','black', 'purple'];
+const colorHistoryDiv = document.getElementById('colorHistory');
 
-body.style.backgroundColor = 'blue';
-//updateColorHistory();
+const colors = ['#00FF00', '#FF0000', '#FF00FF', 
+'#008000', '#0000FF', '#800000', 
+'#FFFFF0', '#808080', '#C0C0C0', 
+'#FFA500', '#800080', '#000080']
 
-btn.addEventListener('click', function(){
-    const colorIndex = parseInt(Math.random()* colors.length);
-    body.style.backgroundColor = colors[colorIndex];
-})
+function bgC(){
+    const colorIndex = Math.floor(Math.random()* colors.length);
+    return colors[colorIndex];
+    } 
 
-updateColorHistory();
+    btn.addEventListener('click', () => {
+        let bgColor = bgC();
+        document.body.style.backgroundColor = bgColor;
 
-function updateColorHistory() {
+
+
+let colorHistory = document.createElement('div');
+    colorHistory.style.backgroundColor = bgColor;
+    colorHistory.classList.add('colorHistory');
+    colorHistory.textContent = bgColor;
+    colorHistoryDiv.prepend(colorHistory);
+
     colorHistory.innerHTML = '';
-    colors.forEach(color => {
-        const colorDiv = document.createElement('div');
-        colorDiv.style.backgroundColor = color;
-        colorDiv.style.marginTop = '20px';
-        colorDiv.style.width = '50px';
-        colorDiv.style.height = '50px';
-        colorDiv.style.display = 'inline-block';
-        colorDiv.style.marginRight = '5px';
-        colorHistory.appendChild(colorDiv);
-    });
-}
+})
